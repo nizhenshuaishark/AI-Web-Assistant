@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI Web Assistant</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <h1>AI Web Assistant</h1>
+  </div>
+
+  <!-- Tab 区域 -->
+  <div class="tab-container">
+    <div class="tab active" data-tab="image">🖼️ Image Analysis</div>
+    <div class="tab" data-tab="text">🧠 Text Analysis</div>
+    <div class="tab" data-tab="page">🌐 Page Analysis</div>
+    <div class="tab-indicator"></div>
+  </div>
+
+  <!-- 主容器 -->
+  <div class="container">
+    <!-- Image Analysis -->
+    <div class="section active-tab" id="image-section">
+      <h2>🖼️ Image AI Analysis</h2>
+      <div class="section-content">
+        <button id="captureScreenshot" class="btn">📸 Capture Screenshot</button>
+        <div class="result-header">❓what to you want to ask:</div>
+        <div id="Image_question" class="preview-container1" contenteditable="true"></div>
+        <div class="result-header">📷 Screenshot Preview:</div>
+        <div id="screenshotPreview" class="preview-container">
+          <p>💡 Capture a screenshot first, then let AI analyze it</p>
+        </div>
+        <div class="btn-row">
+          <button id="cancelScreenshot" class="btn" disabled>❌ Cancel</button>
+          <button id="downloadScreenshot" class="btn" disabled>📥 Download Screenshot</button>
+          <button id="analyzeImage" class="btn" disabled>🤖 AI Analyze Image</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Analysis -->
+    <div class="section hidden-tab" id="text-section">
+      <h2>🧠 Text AI Analysis</h2>
+      <div class="section-content">
+        <textarea id="textInput" placeholder="✍️ Enter or paste text here for AI analysis...(For example: paste an article, notes, or a paragraph)"></textarea>
+        <div class="btn-row">
+          <button id="analyzeText" class="btn">🧠 AI Analyze Text</button>
+        </div>
+        <div class="result-header">📝 Analysis Result:</div>
+        <div id="textAnalysisResult" class="result-container">
+          <button class="copy-btn" data-target="textAnalysisResult">📋 Copy</button>
+          <p>💡 Results will appear here after analysis</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Analysis -->
+    <div class="section hidden-tab" id="page-section">
+      <h2>🌐 Page AI Analysis</h2>
+      <div class="section-content">
+        <div class="btn-row">
+          <button id="analyzePage" class="btn">🌐 AI Analyze Current Page</button>
+        </div>
+        <div class="result-header">📝 Analysis Result:</div>
+        <div id="pageAnalysisResult" class="result-container">
+          <!-- <button class="copy-btn" data-target="pageAnalysisResult">📋 Copy</button> -->
+          <p>💡 Click the button above to let AI summarize the current page，if your Web is too long,please wait it appear ✅ what is complete</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

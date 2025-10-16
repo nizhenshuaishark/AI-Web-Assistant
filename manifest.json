@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "AI Web Assistant",
+  "version": "0.1",
+  "description": "AI powered web assistant with text analysis, page screenshots, and AI interpretations",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "trial_tokens": ["A2ZXnu5+aoFWx6WDrrStg7rv7qSZ65ACSNbrVIUjb49Tqvr64Sd1qB85SPqgo2b8Zn8y5dIUpC07f/aGFjOsHggAAACPeyJvcmlnIjoiY2hyb21lLWV4dGVuc2lvbjovL2NtbmhiYW9tYmdib2RjaHBoZWZsZGlrZ2VibmZmbmIiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "AI Web Assistant",
+    "default_icon": {
+      "16": "assets/dino.png",
+      "32": "assets/myicon.png",
+      "48": "assets/myicon.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/dino-pointer.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
