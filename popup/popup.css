@@ -1,234 +1,383 @@
-/* 页面整体样式 */
+/* ======== 基础布局 ======== */
 body {
-  display: flex;
-  flex-direction: column;
-  min-width: 500px;
-  min-height: 750px;
+  width: 540px;
+  min-height: 640px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #2e2e4e; 
+  color: #e0e0e0;
   margin: 0;
-  font-family: sans-serif;
-  border-radius: 20px; /* 更加圆润的圆角 */
-  /* 背景图 */
-  background: url("../assets/bg.jpg") no-repeat right center fixed; /* 调整背景图到右侧以增强右对齐视觉效果 */
-  background-size: cover;
-
-  color: #222;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.25); /* 增强阴影效果 */
-  overflow: hidden; /* 确保圆角效果完整显示 */
+  padding: 0;
+  overflow-x: hidden;
 }
 
-/* 顶部标题 */
+/* ======== 标题美化 ======== */
 .header {
   text-align: center;
-  padding: 15px 0;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  border-radius: 0 0 20px 20px; /* 与整体圆角一致 */
+  background: #1a1a2e; 
+  color: #fff;
+  padding: 16px 0; 
+  border-bottom: 3px solid #00f0ff; 
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4); 
 }
 
-/* Tab 区域 */
+/* 主标题：字体和霓虹效果 */
+.logo-text {
+  font-family: 'Consolas', 'Courier New', monospace; 
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 2px; 
+  margin: 0;
+  color: #fff; 
+  text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, 0 0 15px #00f0ff; 
+}
+
+/* 突出显示的部分 */
+.logo-text .highlight {
+  color: #ff33ff; 
+  text-shadow: 0 0 5px #ff33ff, 0 0 10px #ff33ff;
+}
+
+/* 副标题/口号 */
+.slogan {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #aaffff; 
+  font-weight: 300;
+  letter-spacing: 0.8px;
+}
+
+/* ======== Tabs ======== */
 .tab-container {
   display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid rgba(255,255,255,0.3);
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px 20px 0 0; /* 与整体圆角一致 */
+  justify-content: space-around;
+  border-bottom: 2px solid #555;
+  background: #23233b; 
 }
+
 .tab {
   flex: 1;
   text-align: center;
-  padding: 14px 0;
-  font-size: 16px;
-  font-weight: bold;
+  padding: 10px 0;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-  border-radius: 16px 16px 0 0; /* 更大的圆角 */
-  margin: 0 5px;
-  color: #222;
+  font-weight: 500;
+  color: #aaa;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
 }
-.tab:hover { background: rgba(255,255,255, 0.4); color: #3367d6; }
-.tab.active { background: rgba(66,133,244,0.8); color: white; }
-.tab-indicator { display: none !important; }
 
-/* 主容器 */
+.tab:hover {
+  background: #2e2e4e;
+}
+
+.tab.active {
+  color: #00f0ff; 
+  border-bottom: 3px solid #00f0ff;
+  background: #1a1a2e; 
+}
+
+/* ======== 内容区 ======== */
 .container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  overflow-y: auto;
+  padding: 16px 22px;
 }
 
-/* Section 卡片*/
 .section {
-  flex: 1;
   display: none;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 18px; /* 更圆润的圆角 */
-  padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
-.active-tab { display: flex; }
-.hidden-tab { display: none; }
-.section-content { flex: 1; display: flex; flex-direction: column; gap: 12px; }
 
-/* 按钮 */
+h2 {
+    color: #00f0ff;
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.4);
+}
+
+.active-tab {
+  display: block;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-header {
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  color: #aaffff;
+}
+
+/* ======== 按钮通用样式 ======== */
 .btn {
-  margin: 8px 0;
-  padding: 12px 16px;
-  cursor: pointer;
+  background: #ff33ff; 
   border: none;
-  border-radius: 14px; /* 更圆润的按钮圆角 */
-  background: linear-gradient(135deg, #4285f4, #3367d6);
   color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
   font-size: 14px;
-  font-weight: bold;
-  transition: transform 0.2s, box-shadow 0.3s;
-  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 8px rgba(255, 51, 255, 0.5);
 }
-.btn:hover { box-shadow: 0 6px 15px rgba(66,133,244,0.5); }
-.btn:disabled { background: rgba(200,200,200,0.7); cursor: not-allowed; }
-.btn:active { transform: scale(0.97); }
 
-/* 按钮行横向布局 */
-.btn-row {
+.btn:hover {
+  background: #cc22cc;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  background: #444;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ======== 三按钮居中排布 ======== */
+.btn-row.centered {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: center;
+  gap: 18px;
   margin-top: 10px;
 }
-.btn-row .btn { flex: 1; text-align: center; }
 
-/* 文本输入框 */
-#textInput {
+/* ======== 输入与结果 ======== */
+textarea {
   width: 100%;
-  min-height: 100px;
-  max-height: 250px;
+  height: 100px;
+  padding: 10px;
   resize: vertical;
-  padding: 12px;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 14px; /* 更圆润的输入框圆角 */
   font-size: 14px;
-  line-height: 1.5;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #222;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-#textInput:focus {
-  border: 1px solid #4285f4;
-  box-shadow: 0 0 8px rgba(66,133,244,0.7);
+  border: 1px solid #444;
+  border-radius: 8px;
   outline: none;
-}
-#textInput::placeholder {
-  color: #555;
-  font-style: italic;
-  opacity: 0.8;
-  white-space: pre-line;
+  transition: border-color 0.2s;
+  box-sizing: border-box; 
+  background: #23233b;
+  color: #e0e0e0;
 }
 
-/* 结果与预览容器*/
-.result-header {
-  font-weight: bold;
-  margin: 10px 0 6px;
-  color: #333;
+textarea:focus {
+  border-color: #00f0ff;
+  box-shadow: 0 0 5px rgba(0, 240, 255, 0.6);
 }
-.result-container,
-.preview-container {
-  position: relative;
-  flex: 1;
-  border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+
+.preview-container,
+.result-container {
+  background: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 10px;
   padding: 12px;
-  border-radius: 14px; /* 更圆润的容器圆角 */
-  font-size: 14px;
-  line-height: 1.5;
-  color: #222;
-  overflow-y: auto;
-}
-.input-container {
+  min-height: 100px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   position: relative;
-  flex: 1;
-  border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 14px; /* 更圆润的输入容器圆角 */
-  font-size: 14px;
-  line-height: 1.5;
-  color: #222;
-  overflow-y: auto;
-  height: 20px;
+  padding-bottom: 48px; 
 }
 
 .preview-container1 {
-  position: relative;
-  border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 8px;          
-  border-radius: 14px; /* 更圆润的预览容器圆角 */
-  font-size: 14px;
-  line-height: 1.4;
-  color: #222;
-  overflow-y: auto;
-  height: 60px;          
-  resize: vertical;      
-  width: 100%;           
-  box-sizing: border-box; 
-  overflow-y: hidden;
+  border: 1px dashed #00f0ff;
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 40px;
+  background: #23233b;
+  color: #e0e0e0;
+  outline: none;
 }
-.result-container p,
-.preview-container p {
-  color: #444;
-  font-style: italic;
-  margin: 0;
-  text-align: center;
-}
-.preview-container img { max-width: 100%; border-radius: 10px; /* 更圆润的图片圆角 */ }
 
-/* 复制按钮 */
+/* ======== Copy 按钮 ======== */
 .copy-btn {
   position: absolute;
   top: 8px;
-  right: 8px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 8px; /* 更圆润的复制按钮圆角 */
+  right: 10px;
+  background: rgba(0, 240, 255, 0.85); 
+  color: #1a1a2e;
+  border: none;
+  border-radius: 6px;
   padding: 4px 8px;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  opacity: 0;
+  transition: all 0.25s ease;
+  z-index: 10; 
 }
-.copy-btn:hover { background: rgba(255,255,255, 0.9); }
 
-/* Loading 动画 */
-.loading-dots {
+.result-container:hover .copy-btn,
+.preview-container:hover .copy-btn {
+  opacity: 1;
+}
+
+.copy-btn:hover:not(:disabled) {
+  background: rgba(0, 240, 255, 1);
+  transform: scale(1.08);
+}
+
+/* 禁用状态样式 */
+.copy-btn:disabled {
+  background: rgba(170, 170, 170, 0.8);
+  color: #333;
+  cursor: not-allowed;
+  opacity: 0.4 !important;
+}
+
+/* 点击复制闪光动画 */
+.copy-btn.copied {
+  animation: copiedFlash 0.4s ease;
+}
+
+@keyframes copiedFlash {
+  0% { box-shadow: 0 0 0 0 rgba(40, 180, 99, 0.6); }
+  70% { box-shadow: 0 0 6px 3px rgba(40, 180, 99, 0.2); }
+  100% { box-shadow: 0 0 0 0 rgba(40, 180, 99, 0); }
+}
+
+/* ======== 翻译控件  ======== */
+.translate-controls {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  right: 12px;
   display: flex;
-  gap: 5px;
-  margin: 10px 0;
-  justify-content: center;
+  gap: 8px;
+  align-items: center;
 }
-.loading-dots span {
-  width: 8px;
-  height: 8px;
-  background: #4285f4;
-  border-radius: 50%; /* 完全圆形的加载点 */
-  animation: bounce 1.2s infinite;
+
+.translate-select {
+  flex: 1; 
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  font-size: 13px;
+  background: #23233b;
+  color: #e0e0e0;
 }
-@keyframes bounce {
-  0%, 80%, 100% { transform: scale(0.6); opacity: 0.6; }
-  40% { transform: scale(1); opacity: 1; }
+
+.btn-translate {
+  padding: 6px 12px;
+  font-size: 13px;
+  flex-shrink: 0; 
+}
+
+/* ======== Tooltip 样式 ======== */
+.tooltip {
+  position: fixed;
+  background: rgba(0, 240, 255, 0.92);
+  color: #1a1a2e;
+  padding: 5px 9px;
+  border-radius: 6px;
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 9999;
+  white-space: nowrap;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======== Toast 提示 ======== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(40, 167, 69, 0.9);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s, bottom 0.4s;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  bottom: 34px;
+}
+
+.toast.ok { background: rgba(40, 167, 69, 0.9); }
+.toast.error { background: rgba(220, 53, 69, 0.9); }
+.toast.loading { background: rgba(255, 193, 7, 0.95); }
+
+/* ======== 状态栏 ======== */
+.status-bar {
+  text-align: center;
+  font-size: 13px;
+  padding: 8px;
+  color: #1a1a2e;
+  background: #aaa;
+}
+
+.status-bar.ok { background: #00f0ff; color: #1a1a2e; }
+.status-bar.error { background: #dc3545; color: white; }
+
+/* ======== 设置界面 ======== */
+.section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #1a1a2e;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+
+.section-content label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #aaffff;
+  margin-top: 4px;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #ff33ff; 
+}
+
+select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  font-size: 14px;
+  background: #23233b;
+  color: #e0e0e0;
+}
+
+
+/* ======== 页脚标志 ======== */
+#footer {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 13px;
+  color: #aaffff;
+  background: #1a1a2e;
+  border-top: 1px solid #444;
+  margin-top: 8px;
+}
+
+#footer strong {
+  color: #aaffff; 
+  font-weight: normal;
+}
+
+/* ======== 滚动条优化 ======== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff33ff;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cc22cc;
 }

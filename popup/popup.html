@@ -7,70 +7,122 @@
 </head>
 <body>
   <div class="header">
-    <h1>AI Web Assistant</h1>
+    <h1 class="logo-text">
+      AI <span class="highlight">Web Assistant</span>
+    </h1>
+    <p class="slogan">AI Web Assistant — Digital Intelligence at Your Fingertips</p>
   </div>
 
-  <!-- Tab 区域 -->
   <div class="tab-container">
-    <div class="tab active" data-tab="image">🖼️ Image Analysis</div>
-    <div class="tab" data-tab="text">🧠 Text Analysis</div>
-    <div class="tab" data-tab="page">🌐 Page Analysis</div>
-    <div class="tab-indicator"></div>
+    <div class="tab active" data-tab="image">🖼️ Image Assistant</div>
+    <div class="tab" data-tab="text">🧠 Text Assistant</div>
+    <div class="tab" data-tab="page">🌐 Page Assistant</div>
+    <div class="tab" data-tab="settings">⚙️ Settings</div>
   </div>
 
-  <!-- 主容器 -->
   <div class="container">
-    <!-- Image Analysis -->
+
     <div class="section active-tab" id="image-section">
       <h2>🖼️ Image AI Analysis</h2>
-      <div class="section-content">
-        <button id="captureScreenshot" class="btn">📸 Capture Screenshot</button>
-        <div class="result-header">❓what to you want to ask:</div>
-        <div id="Image_question" class="preview-container1" contenteditable="true"></div>
-        <div class="result-header">📷 Screenshot Preview:</div>
-        <div id="screenshotPreview" class="preview-container">
-          <p>💡 Capture a screenshot first, then let AI analyze it</p>
+      <button id="captureScreenshot" class="btn">📸 Capture Screenshot</button>
+
+      <div class="result-header">❓ Your question:</div>
+      <div id="Image_question" class="preview-container1" contenteditable="true"></div>
+
+      <div class="result-header">📷 Screenshot Preview:</div>
+      <div id="screenshotPreview" class="preview-container">
+        <p id="imageAnalysisTextContent">💡 Capture first</p>
+        <button class="copy-btn hidden" id="copyImageResult">📋 Copy</button>
+        
+        <div class="translate-controls hidden" id="translateControls_image">
+          <select class="translate-select">
+            <option value="en">Translate to English</option>
+            <option value="zh">Translate to 中文</option>
+            <option value="ja">Translate to 日本語</option>
+          </select>
+          <button class="btn btn-translate" data-target="imageAnalysisTextContent">Translate</button>
         </div>
-        <div class="btn-row">
-          <button id="cancelScreenshot" class="btn" disabled>❌ Cancel</button>
-          <button id="downloadScreenshot" class="btn" disabled>📥 Download Screenshot</button>
-          <button id="analyzeImage" class="btn" disabled>🤖 AI Analyze Image</button>
-        </div>
+      </div>
+
+      <div class="btn-row centered">
+        <button id="cancelScreenshot" class="btn" disabled>❌ Cancel</button>
+        <button id="downloadScreenshot" class="btn" disabled>📥 Download</button>
+        <button id="analyzeImage" class="btn" disabled>🤖 Analyze</button>
       </div>
     </div>
 
-    <!-- Text Analysis -->
     <div class="section hidden-tab" id="text-section">
       <h2>🧠 Text AI Analysis</h2>
-      <div class="section-content">
-        <textarea id="textInput" placeholder="✍️ Enter or paste text here for AI analysis...(For example: paste an article, notes, or a paragraph)"></textarea>
-        <div class="btn-row">
-          <button id="analyzeText" class="btn">🧠 AI Analyze Text</button>
-        </div>
-        <div class="result-header">📝 Analysis Result:</div>
-        <div id="textAnalysisResult" class="result-container">
-          <button class="copy-btn" data-target="textAnalysisResult">📋 Copy</button>
-          <p>💡 Results will appear here after analysis</p>
+      <textarea id="textInput" placeholder="✍️ Paste or type text here..."></textarea>
+      <button id="analyzeText" class="btn">🧠 Analyze Text</button>
+      <div class="result-header">📝 Result:</div>
+      <div id="textAnalysisResult" class="result-container">
+        <p id="textAnalysisTextContent">💡 Result will appear here</p>
+        <button class="copy-btn hidden" id="copyTextResult">📋 Copy</button>
+        
+        <div class="translate-controls hidden" id="translateControls_text">
+          <select class="translate-select">
+            <option value="en">Translate to English</option>
+            <option value="zh">Translate to 中文</option>
+            <option value="ja">Translate to 日本語</option>
+          </select>
+          <button class="btn btn-translate" data-target="textAnalysisTextContent">Translate</button>
         </div>
       </div>
     </div>
 
-    <!-- Page Analysis -->
     <div class="section hidden-tab" id="page-section">
       <h2>🌐 Page AI Analysis</h2>
+      <button id="analyzePage" class="btn">🌐 Analyze Current Page</button>
+      <div class="result-header">📝 Result:</div>
+      <div id="pageAnalysisResult" class="result-container">
+        <button class="copy-btn hidden" id="copyPageResult">📋 Copy</button>
+        
+        <div class="translate-controls hidden" id="translateControls_page">
+          <select class="translate-select">
+            <option value="en">Translate to English</option>
+            <option value="zh">Translate to 中文</option>
+            <option value="ja">Translate to 日本語</option>
+          </select>
+          <button class="btn btn-translate" data-target="pageAnalysisTextContent">Translate</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section hidden-tab" id="settings-section">
+      <h2>⚙️ AI Settings</h2>
       <div class="section-content">
-        <div class="btn-row">
-          <button id="analyzePage" class="btn">🌐 AI Analyze Current Page</button>
-        </div>
-        <div class="result-header">📝 Analysis Result:</div>
-        <div id="pageAnalysisResult" class="result-container">
-          <!-- <button class="copy-btn" data-target="pageAnalysisResult">📋 Copy</button> -->
-          <p>💡 Click the button above to let AI summarize the current page，if your Web is too long,please wait it appear ✅ what is complete</p>
-        </div>
+        <label>🧠 Temperature: <span id="tempValue">1.0</span></label>
+        <input id="temperatureRange" type="range" min="0.2" max="2.0" step="0.1" value="1.0">
+
+        <label>🎯 Top-K: <span id="topKValue">20</span></label>
+        <input id="topKRange" type="range" min="1" max="40" step="1" value="20">
+
+        <label>🌍 Output Language:</label>
+        <select id="languageSelect">
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+          <option value="auto" selected>Auto-detect</option>
+        </select>
+
+        <label>🔔 Toast Notifications:</label>
+        <select id="toastSelect">
+          <option value="on" selected>Enabled</option>
+          <option value="off">Disabled</option>
+        </select>
+
+        <button id="saveSettings" class="btn">💾 Save Settings</button>
       </div>
     </div>
   </div>
 
+  <div id="statusBar" class="status-bar">🔄 Checking model status...</div>
+  <div id="toast" class="toast hidden"></div>
+
+  <div id="footer">
+    <p>© 2025 AI Web Assistant — Bringing Intelligence to Your Web 🌐</p>
+  </div>
+  
   <script src="popup.js"></script>
 </body>
 </html>
