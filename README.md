@@ -13,6 +13,12 @@ AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 bui
 ## 使用方法
 
 ### 从源代码安装
+前提条件：
+1）打开 chrome://flags 找到 prompt-api-for-gemini-nano 设置为“Enabled”【注意有提示重启浏览器，但不要点，等下一步完成再重启】
+
+2）然后找到 optimization-guide-on-device-model 设置为“Enabled BypassPerfRequirement”，重启浏览器。
+
+3）进到 chrome://components/ 找到 Optimization Guide On Device Model ，如果版本显示是0.0.0.0，就后点击“Check for update”。然后就会开始下载模型，模型大约2GB，下载所需时间跟你的网络有关系，我等了几分钟。
 
 1. 克隆或下载项目到本地：
    ```bash
@@ -30,9 +36,7 @@ AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 bui
 
 1. 安装完成后，在浏览器工具栏中点击AI-Web-Assistant图标，并选择将图标固定在拓展栏
 <img width="1815" height="529" alt="image" src="https://github.com/user-attachments/assets/f9498fb4-1064-43be-8a87-f06dce1691ad" />
-
-
-3. 在弹出的窗口中输入您想要咨询的问题或需要处理的文本
+2. 在弹出的窗口中输入您想要咨询的问题或需要处理的文本点击
 
 4. 点击"发送"按钮获取AI的回复
 
@@ -46,30 +50,33 @@ AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 bui
    - 输入：正常安装扩展
    - 预期输出：扩展图标出现在浏览器工具栏，可以正常点击打开
 
-2. **AI对话功能**
-   - 输入：在输入框中输入任意问题（如"你好，你能做什么？"）
-   - 预期输出：AI助手在几秒内返回相关回复
+2. **image Assistant test**
+   - 输入：在想要进行分析的页面下点击Capture Screenshrot，并且在your question区域输入想要提问的问题，再点击popup页面右下角的analyze按钮。
+   - 预期输出：AI会根据图片和问题给出他的分析。
 
-3. **内容生成**
+3. **text Assistant test**
    - 输入：输入明确的生成请求（如"写一篇关于秋天的短文"）
    - 预期输出：AI生成符合要求的文本内容
 
-4. **翻译功能**
-   - 输入：输入需要翻译的文本（如"Hello, how are you?"）
-   - 预期输出：AI返回对应的语言翻译（如"你好，你好吗？"）
+4.**Page Assistant test**
+   - 点击analyze current page，对当前浏览器页面进行AI分析。
+   - 预期输出：AI生成符合要求的文本内容
 
 ### 高级功能测试
 
-1. **网页内容总结**
-   - 输入：在当前网页点击"总结当前页面"按钮
-   - 预期输出：AI生成当前网页内容的简要总结
+1. **长网页内容总结**
+   - 选择一个内容多的网页进行page analyze。
+   - 预期输出：AI生成当前网页内容的分析。
 
 2. **多语言支持**
    - 输入：切换到不同语言后输入问题
    - 预期输出：AI以对应语言提供回复
+3.  **翻译功能**
+   - 输入：在任一页面得到ai的回答后，选择想要翻译的目标语言，点击翻译按钮将AI回答的内容翻译为目标语言。
+   - 预期输出：AI返回对应的语言翻译。
 
 3. **设置保存**
-   - 输入：更改设置选项（如语言偏好）
+   - 修改：更改设置选项（如语言偏好）
    - 预期输出：设置被正确保存并在下次打开时保持
 
 ## 依赖说明
@@ -88,23 +95,6 @@ AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 bui
 - 图标路径
 - 脚本文件位置
 
-### API密钥配置
-
-在首次使用前，需在扩展设置中配置AI模型API密钥：
-1. 打开扩展设置页面
-2. 在"API密钥"字段中填入有效的API密钥
-3. 点击"保存设置"
-
-## 构建/编译指南
-
-### 开发环境准备
-
-1. 确保已安装Node.js（版本14或更高）
-
-2. 安装必要的构建工具：
-   ```bash
-   npm install -g web-ext  # 用于Firefox扩展开发
-   ```
 
 ### 代码结构
 
@@ -114,17 +104,6 @@ AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 bui
 - `manifest.json`: 扩展配置文件
 - `README.md`: 项目说明文档
 
-### 打包扩展
-
-1. 运行以下命令打包扩展：
-   ```bash
-   # Windows
-   powershell -Command "Compress-Archive -Path manifest.json, assets, js, popup -DestinationPath ai-web-assistant.zip"
-   ```
-
-2. 生成的zip文件可在浏览器中直接加载
-
-## 故障排除
 
 ### 常见问题
 
@@ -132,21 +111,8 @@ AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 bui
    - 检查是否启用了开发者模式
    - 确认所有文件都在正确的位置
 
-2. **AI响应缓慢或无响应**
-   - 检查网络连接
-   - 确认API密钥配置正确
-
-3. **权限错误**
-   - 检查manifest.json中的权限设置
-   - 确认在扩展页面中已启用所有必要权限
-
-## 贡献指南
-
-1. Fork项目
-2. 创建功能分支（`git checkout -b feature/AmazingFeature`）
-3. 提交更改（`git commit -m 'Add some AmazingFeature'`）
-4. 推送到分支（`git push origin feature/AmazingFeature`）
-5. 创建Pull Request
+2. **AI无响应**
+   检查浏览器是否已经安装built-in model,并且检查prompt API是否可用。
 
 ## 许可证
 
