@@ -1,119 +1,117 @@
 # AI-Web-Assistant
 
-AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 built-in ai模型来帮助用户处理各种网络任务，包括信息检索、内容总结、翻译等。
+AI-Web-Assistant is a browser-based AI assistant extension that utilizes Google's built-in AI model to help users handle various web tasks, including information retrieval, content summarization, translation, and more.
 
-## 功能列表
+## Feature List
 
-- **AI 图片分析功能**：通过用户的截图和提问对图片进行分析。
--  **文本分析功能**:用户可以对ai助手发起提问，AI会回答他们所提问的问题
-- **web页面分析与总结功能**：对当前用户所在的页面进行AI分析，（Google官方的页面除外），会对页面所存在的内容进行摘要和解析
-- **翻译功能**：将AI分析的结果按照要求转换为对应的语言
-- **个性化设置**：在setting界面，用户可以按照自己的需求对ai的相关配置进行修改。
+- **AI Image Analysis**: Analyze images using user screenshots and questions.
+- **Text Analysis**: Users can ask questions to the AI assistant, and AI will respond to their inquiries.
+- **Web Page Analysis and Summarization**: AI analyzes the current page the user is on (except official Google pages) and summarizes and parses the page content.
+- **Translation Function**: Convert AI analysis results into the required language.
+- **Personalized Settings**: In the settings interface, users can modify AI-related configurations according to their needs.
 
-## 使用方法
+## Installation
 
-### 从源代码安装
-前提条件：
-1）打开 chrome://flags 找到 prompt-api-for-gemini-nano 设置为“Enabled”【注意有提示重启浏览器，但不要点，等下一步完成再重启】
+### Install from Source Code
+Prerequisites:
+1) Open chrome://flags, find prompt-api-for-gemini-nano and set it to "Enabled" [Note that there will be a prompt to restart the browser, but don't click it. Wait for the next step to complete before restarting]
+2) Then find optimization-guide-on-device-model and set it to "Enabled BypassPerfRequirement", then restart the browser.
+3) Go to chrome://components/, find Optimization Guide On Device Model. If the version shows as 0.0.0.0, click "Check for update". The model will then start downloading. The model is approximately 2GB, and the download time depends on your network connection - I waited a few minutes.
 
-2）然后找到 optimization-guide-on-device-model 设置为“Enabled BypassPerfRequirement”，重启浏览器。
-
-3）进到 chrome://components/ 找到 Optimization Guide On Device Model ，如果版本显示是0.0.0.0，就后点击“Check for update”。然后就会开始下载模型，模型大约2GB，下载所需时间跟你的网络有关系，我等了几分钟。
-
-1. 克隆或下载项目到本地：
+1. Clone or download the project locally:
    ```bash
    git clone https://github.com/nizhenshuaishark/AI-Web-Assistant.git
    ```
-   或者直接下载代码压缩包，并进行解压。
-2. 打开浏览器（使用Chrome）并导航到 `chrome://extensions/` 页面
+   Or directly download the code archive and extract it.
+2. Open the browser (using Chrome) and navigate to the `chrome://extensions/` page
 
-3. 启用"开发者模式"（在页面右上角）
+3. Enable "Developer mode" (in the top right corner of the page)
 
-4. 点击"加载已解压的扩展程序"
+4. Click "Load unpacked extension"
 
-5. 选择你下载的 `AI-Web-Assistant` 文件夹
-## 使用说明
+5. Select your downloaded `AI-Web-Assistant` folder
+## Usage Instructions
 
-1. 安装完成后，在浏览器工具栏中点击AI-Web-Assistant图标，并选择将图标固定在拓展栏
+1. After installation, click the AI-Web-Assistant icon in the browser toolbar and select to pin the icon to the extension bar
 <img width="1815" height="529" alt="image" src="https://github.com/user-attachments/assets/f9498fb4-1064-43be-8a87-f06dce1691ad" />
-2. 在弹出的窗口中输入您想要咨询的问题或需要处理的文本点击
+2. In the popup window, enter the question you want to ask or the text you need to process
 
-4. 点击"发送"按钮获取AI的回复
+4. Click the "Send" button to get AI's response
 
-5. 使用设置面板调整AI模型参数或选择不同语言
+5. Use the settings panel to adjust AI model parameters or select different languages
 
-## 测试步骤
+## Testing Steps
 
-### 基础功能测试
+### Basic Functionality Testing
 
-1. **安装验证**
-   - 输入：正常安装扩展
-   - 预期输出：扩展图标出现在浏览器工具栏，可以正常点击打开
+1. **Installation Verification**
+   - Input: Install extension normally
+   - Expected output: Extension icon appears in the browser toolbar and can be clicked to open normally
 
-2. **image Assistant test**
-   - 输入：在想要进行分析的页面下点击Capture Screenshrot，并且在your question区域输入想要提问的问题，再点击popup页面右下角的analyze按钮。
-   - 预期输出：AI会根据图片和问题给出他的分析。
+2. **Image Assistant Test**
+   - Input: On the page you want to analyze, click Capture Screenshot and enter your question in the "your question" area, then click the analyze button in the bottom right corner of the popup page.
+   - Expected output: AI will provide its analysis based on the image and question.
 
-3. **text Assistant test**
-   - 输入：输入明确的生成请求（如"写一篇关于秋天的短文"）
-   - 预期输出：AI生成符合要求的文本内容
+3. **Text Assistant Test**
+   - Input: Enter a clear generation request (such as "write a short article about autumn")
+   - Expected output: AI generates text content that meets the requirements
 
-4.**Page Assistant test**
-   - 点击analyze current page，对当前浏览器页面进行AI分析。
-   - 预期输出：AI生成符合要求的文本内容
+4. **Page Assistant Test**
+   - Click analyze current page to perform AI analysis of the current browser page.
+   - Expected output: AI generates text content that meets the requirements
 
-### 高级功能测试
+### Advanced Functionality Testing
 
-1. **长网页内容总结**
-   - 选择一个内容多的网页进行page analyze。
-   - 预期输出：AI生成当前网页内容的分析。
+1. **Long Web Page Content Summary**
+   - Select a content-rich web page for page analysis.
+   - Expected output: AI generates an analysis of the current web page content.
 
-2. **多语言支持**
-   - 输入：切换到不同语言后输入问题
-   - 预期输出：AI以对应语言提供回复
-3.  **翻译功能**
-   - 输入：在任一页面得到ai的回答后，选择想要翻译的目标语言，点击翻译按钮将AI回答的内容翻译为目标语言。
-   - 预期输出：AI返回对应的语言翻译。
+2. **Multi-language Support**
+   - Input: Switch to different languages and then enter questions
+   - Expected output: AI provides responses in the corresponding language
+3. **Translation Function**
+   - Input: After getting an AI response on any page, select the target language you want to translate to, click the translate button to translate the AI response content to the target language.
+   - Expected output: AI returns the translation in the corresponding language.
 
-3. **设置保存**
-   - 修改：更改设置选项（如语言偏好）
-   - 预期输出：设置被正确保存并在下次打开时保持
+3. **Settings Save**
+   - Modification: Change settings options (such as language preferences)
+   - Expected output: Settings are properly saved and maintained the next time the extension is opened
 
-## 依赖说明
+## Dependencies
 
-- Chrome 或 Edge 浏览器（版本 80 或更高）
-- 活跃的互联网连接
-- AI模型API访问权限（需配置API密钥）
+- Chrome or Edge browser (version 80 or higher)
+- Active internet connection
+- AI model API access permission (requires API key configuration)
 
-## 配置文件
+## Configuration Files
 
 ### manifest.json
 
-此文件定义了扩展的基本信息，包括：
-- 扩展名称和版本
-- 权限设置
-- 图标路径
-- 脚本文件位置
+This file defines the extension's basic information, including:
+- Extension name and version
+- Permission settings
+- Icon paths
+- Script file locations
 
 
-### 代码结构
+### Code Structure
 
-- `assets/`: 包含所有图像和图标文件
-- `js/`: JavaScript源代码文件
-- `popup/`: 扩展弹出窗口的HTML、CSS和JS文件
-- `manifest.json`: 扩展配置文件
-- `README.md`: 项目说明文档
+- `assets/`: Contains all image and icon files
+- `js/`: JavaScript source code files
+- `popup/`: HTML, CSS, and JS files for the extension popup
+- `manifest.json`: Extension configuration file
+- `README.md`: Project documentation file
 
 
-### 常见问题
+### Frequently Asked Questions
 
-1. **扩展无法加载**
-   - 检查是否启用了开发者模式
-   - 确认所有文件都在正确的位置
+1. **Extension fails to load**
+   - Check if Developer mode is enabled
+   - Confirm that all files are in the correct location
 
-2. **AI无响应**
-   检查浏览器是否已经安装built-in model,并且检查prompt API是否可用。
+2. **AI not responding**
+   Check if the browser has installed the built-in model, and check if the prompt API is available.
 
-## 许可证
+## License
 
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件。
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
