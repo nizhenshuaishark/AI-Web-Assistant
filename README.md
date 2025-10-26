@@ -10,15 +10,15 @@ AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 bui
 - **翻译功能**：将AI分析的结果按照要求转换为对应的语言
 - **个性化设置**：在setting界面，用户可以按照自己的需求对ai的相关配置进行修改。
 
-## 安装步骤
+## 使用方法
 
 ### 从源代码安装
 
 1. 克隆或下载项目到本地：
    ```bash
-   git clone https://github.com/yourusername/AI-Web-Assistant.git
+   git clone https://github.com/nizhenshuaishark/AI-Web-Assistant.git
    ```
-
+   或者直接下载代码压缩包，并进行解压。
 2. 打开浏览器（使用Chrome）并导航到 `chrome://extensions/` 页面
 
 3. 启用"开发者模式"（在页面右上角）
@@ -26,25 +26,17 @@ AI-Web-Assistant 是一个基于浏览器的AI助手扩展，利用google的 bui
 4. 点击"加载已解压的扩展程序"
 
 5. 选择你下载的 `AI-Web-Assistant` 文件夹
-
-### 从打包文件安装
-
-1. 在项目根目录运行以下命令打包扩展：
-   ```bash
-   zip -r ai-web-assistant.zip manifest.json assets/ js/ popup/
-   ```
-
-2. 在浏览器扩展页面点击"加载已解压的扩展程序"
-
 ## 使用说明
 
-1. 安装完成后，在浏览器工具栏中点击AI-Web-Assistant图标
+1. 安装完成后，在浏览器工具栏中点击AI-Web-Assistant图标，并选择将图标固定在拓展栏
+<img width="1815" height="529" alt="image" src="https://github.com/user-attachments/assets/f9498fb4-1064-43be-8a87-f06dce1691ad" />
 
-2. 在弹出的窗口中输入您想要咨询的问题或需要处理的文本
 
-3. 点击"发送"按钮获取AI的回复
+3. 在弹出的窗口中输入您想要咨询的问题或需要处理的文本
 
-4. 使用设置面板调整AI模型参数或选择不同语言
+4. 点击"发送"按钮获取AI的回复
+
+5. 使用设置面板调整AI模型参数或选择不同语言
 
 ## 测试步骤
 
